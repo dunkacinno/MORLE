@@ -4,6 +4,7 @@ import tcod as libtcod
 Special thanks to http://rogueliketutorials.com/
 """
 
+
 def handle_keys(key):
     # Movement keys
     if key.vk == libtcod.KEY_UP:

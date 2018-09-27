@@ -1,6 +1,7 @@
 from map_objects.tile import Tile
 from map_objects.rectangle import Rect
 
+
 class GameMap:
     def __init__(self, width, height):
         self.width = width
@@ -9,8 +10,6 @@ class GameMap:
 
     def initialize_tiles(self):
         tiles = [[Tile(True) for y in range(self.height)] for x in range(self.width)]
-
-
 
         return tiles
 
@@ -27,12 +26,8 @@ class GameMap:
 
         return False
 
-    
-
-
-
     def make_map(self):
-        room1 = Rect(20,15,10,15)
-        room2 = Rect(35,15,10,15)
+        room1 = Rect(20, 15, 10, 15)
+        room2 = Rect(35, 15, 10, 15)
         self.create_room(room1)
         self.create_room(room2)
