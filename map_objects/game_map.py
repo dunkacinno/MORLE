@@ -1,6 +1,9 @@
 from map_objects.tile import Tile
 from map_objects.rectangle import Rect
+from map_objects.preset_maps import *
 from random import randint
+
+
 
 
 class GameMap:
@@ -21,15 +24,40 @@ class GameMap:
                 self.tiles[x][y].blocked = False
                 self.tiles[x][y].block_sight = False
 
+    '''def create_pre_room(self, room):'''
+
+
     def is_blocked(self, x, y):
         if self.tiles[x][y].blocked:
             return True
 
         return False
 
-    def make_map(self, max_rooms, room_min_size, room_max_size, map_width, map_height, player):
+    def make_map(self, max_rooms, max_preset_room, room_min_size, room_max_size, map_width, map_height, player):
         rooms = []
         num_rooms = 0
+        preset_room = 0
+        current_room_template = [
+            [1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 1, 1, 0, 1, 1, 0, 1],
+            [1, 0, 1, 0, 0, 0, 1, 0, 1],
+            [1, 0, 0, 0, 1, 0, 0, 0, 1],
+            [1, 0, 1, 0, 0, 0, 1, 0, 1],
+            [1, 0, 1, 1, 0, 1, 1, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1]]
+
+        for c in current_room_template:
+            for r in c:
+                if max_preset_room >= preset_room:
+                    if c == 1:
+                        self.tiles[c][r].blocked = False
+                        self.tiles[c][r].block_sight = False
+                    elif c == 0:
+                        self.tiles[c][r].blocked = True
+                        self.tiles[c][r].block_sight = True
+
 
         for r in range(max_rooms):
             '''random width and height'''
